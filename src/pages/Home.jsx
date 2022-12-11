@@ -18,7 +18,7 @@ function Home() {
       });
   }, []);
   return (
-    <>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />
@@ -31,7 +31,7 @@ function Home() {
               <PizzaBlock {...pizza} key={`${pizza.name}_${pizza.id}`} />
             ))}
       </div>
-    </>
+    </div>
   );
 }
 
