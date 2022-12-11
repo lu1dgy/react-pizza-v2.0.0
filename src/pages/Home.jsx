@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Categories from '../components/Categories';
-import PizzaBlock from '../components/pizzaBlock';
+import PizzaBlock from '../components/PizzaBlock';
 import Sort from '../components/Sort';
-import Skeleton from '../components/pizzaBlock/Skeleton';
+import Skeleton from '../components/PizzaBlock/Skeleton';
 
 function Home() {
   const [items, setItems] = React.useState([]);
@@ -23,7 +23,7 @@ function Home() {
         <Categories />
         <Sort />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">All pizzas</h2>
       <div className="content__items">
         {isLoading
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)

@@ -12,7 +12,7 @@ function Header() {
             <img width="38" src={logo} alt="Pizza logo" />
             <div>
               <h1>React Pizza</h1>
-              <p>самая вкусная пицца во вселенной</p>
+              <p>the best pizza in the universe</p>
             </div>
           </div>
         </Link>
