@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { typeDough } from '../utils/constants';
+import { typeDough } from '../../utils/constants';
 
 function PizzaBlock({ name, price, imageUrl, sizes, types }) {
   const [activeSize, setActiveSize] = React.useState(0);
