@@ -1,13 +1,11 @@
 import React from 'react';
 import { sortList } from '../utils/constants';
 
-function Sort() {
+function Sort({ sortType, onClickType }) {
   const [open, setOpen] = React.useState(false);
 
-  const [sortItem, setSortItem] = React.useState(0);
-
   const onSortItemClick = (index) => {
-    setSortItem(index);
+    onClickType(index);
     setOpen(false);
   };
 
@@ -30,7 +28,7 @@ function Sort() {
           onClick={() => {
             setOpen(!open);
           }}>
-          {sortList[sortItem]}
+          {sortType.name}
         </span>
       </div>
       {open && (
@@ -40,9 +38,9 @@ function Sort() {
               return (
                 <li
                   key={`${list}_${index}`}
-                  onClick={() => onSortItemClick(index)}
-                  className={sortItem === index ? 'active' : ''}>
-                  {list}
+                  onClick={() => onSortItemClick(list)}
+                  className={sortType.sort === list.sort ? 'active' : ''}>
+                  {list.name}
                 </li>
               );
             })}

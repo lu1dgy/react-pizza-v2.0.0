@@ -1,8 +1,6 @@
 import React from 'react';
 import { categories } from '../utils/constants';
-function Categories() {
-  const [activeItem, setActiveItem] = React.useState(0);
-
+function Categories({ categoryId, onClickCategory }) {
   return (
     <div className="categories">
       <ul>
@@ -10,8 +8,8 @@ function Categories() {
           return (
             <li
               key={`${category}_${index}`}
-              onClick={() => setActiveItem(index)}
-              className={activeItem === index ? 'active' : ''}>
+              onClick={() => onClickCategory(index)}
+              className={categoryId === index ? 'active' : ''}>
               {category}
             </li>
           );
