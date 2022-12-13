@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Categories from '../components/Categories';
-import PizzaBlock from '../components/PizzaBlock';
+import PizzaBlock from '../components/PizzaBlock/index';
 import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
