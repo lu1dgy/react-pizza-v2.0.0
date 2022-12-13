@@ -2,7 +2,7 @@
 
 <h2>Description:</h2>
 <p>This website is under construction.It's the better version of previous React-pizza project</p>
-<p>It's a SPA. Here you can search pizza for now, but the cart will be available in a few commits/p>
+<p>It's a SPA. Here you can search pizza for now, but the cart will be available in a few commits</p>
 
 <h3>Technologies:</h3>
 <p>This page has adaptive layout.</p>
