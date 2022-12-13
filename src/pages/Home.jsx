@@ -5,8 +5,10 @@ import PizzaBlock from '../components/PizzaBlock';
 import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
+import { SearchContext } from '../App';
 
-function Home({ searchValue }) {
+function Home() {
+  const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [categoryId, setCategoryId] = React.useState(0);
@@ -16,6 +18,7 @@ function Home({ searchValue }) {
     sort: 'rating',
   });
 
+  //fetch options
   const category = categoryId > 0 ? `category=${categoryId}` : ``;
   const sortBy = sortType.sort.replace('-', '');
   const order = sortType.sort[0] === `-` ? `asc` : `desc`;
