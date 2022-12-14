@@ -1,27 +1,36 @@
 import React from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock/index';
 import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
+
 import { SearchContext } from '../App';
+import { setCategoryId } from '../redux/slices/filterSlice';
 
 function Home() {
+  //redux
+  const categoryId = useSelector((state) => state.filter.categoryId);
+  const sortType = useSelector((state) => state.filter.sortProp.sort);
+
+  const dispatch = useDispatch();
+
   const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [categoryId, setCategoryId] = React.useState(0);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [sortType, setSortType] = React.useState({
-    name: 'Popular(DESC)',
-    sort: 'rating',
-  });
+
+  const onCLickCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   //fetch options
   const category = categoryId > 0 ? `category=${categoryId}` : ``;
-  const sortBy = sortType.sort.replace('-', '');
-  const order = sortType.sort[0] === `-` ? `asc` : `desc`;
+  const sortBy = sortType.replace('-', '');
+  const order = sortType[0] === `-` ? `asc` : `desc`;
   const search = searchValue ? `&search=${searchValue}` : ``;
 
   React.useEffect(() => {
@@ -48,11 +57,8 @@ function Home() {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories
-          categoryId={categoryId}
-          onClickCategory={(index) => setCategoryId(index)}
-        />
-        <Sort sortType={sortType} onClickType={(index) => setSortType(index)} />
+        <Categories categoryId={categoryId} onClickCategory={onCLickCategory} />
+        <Sort />
       </div>
       <h2 className="content__title">All pizzas</h2>
       <div className="content__items">{isLoading ? skeletons : pizzas}</div>
