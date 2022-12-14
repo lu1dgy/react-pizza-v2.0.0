@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -26,22 +27,24 @@ function Home() {
     dispatch(setCategoryId(id));
   };
 
-  //fetch options
-  const category = categoryId > 0 ? `category=${categoryId}` : ``;
-  const sortBy = sortProp.sort.replace('-', '');
-  const order = sortProp.sort[0] === `-` ? `asc` : `desc`;
-  const search = searchValue ? `&search=${searchValue}` : ``;
-
   React.useEffect(() => {
     setIsLoading(true);
-    fetch(
-      `https://6394ee6886829c49e82ab259.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setItems(json);
+
+    //axios options
+    const category = categoryId > 0 ? `category=${categoryId}` : ``;
+    const sortBy = sortProp.sort.replace('-', '');
+    const order = sortProp.sort[0] === `-` ? `asc` : `desc`;
+    const search = searchValue ? `&search=${searchValue}` : ``;
+
+    axios
+      .get(
+        `https://6394ee6886829c49e82ab259.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
+      )
+      .then((res) => {
+        setItems(res.data);
         setIsLoading(false);
       });
+
     // eslint-disable-next-line
   }, [categoryId, sortProp.sort, searchValue, currentPage]);
 
