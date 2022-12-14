@@ -13,8 +13,7 @@ import { setCategoryId } from '../redux/slices/filterSlice';
 
 function Home() {
   //redux
-  const categoryId = useSelector((state) => state.filter.categoryId);
-  const sortType = useSelector((state) => state.filter.sortProp.sort);
+  const { sortProp, categoryId } = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();
 
@@ -29,8 +28,8 @@ function Home() {
 
   //fetch options
   const category = categoryId > 0 ? `category=${categoryId}` : ``;
-  const sortBy = sortType.replace('-', '');
-  const order = sortType[0] === `-` ? `asc` : `desc`;
+  const sortBy = sortProp.sort.replace('-', '');
+  const order = sortProp.sort[0] === `-` ? `asc` : `desc`;
   const search = searchValue ? `&search=${searchValue}` : ``;
 
   React.useEffect(() => {
@@ -44,7 +43,7 @@ function Home() {
         setIsLoading(false);
       });
     // eslint-disable-next-line
-  }, [categoryId, sortType, searchValue, currentPage]);
+  }, [categoryId, sortProp.sort, searchValue, currentPage]);
 
   const pizzas = items.map((pizza) => (
     <PizzaBlock {...pizza} key={`${pizza.name}_${pizza.id}`} />
