@@ -9,7 +9,6 @@ function Sort() {
   const dispatch = useDispatch();
 
   const sortItem = useSelector((state) => state.filter.sortProp);
-
   const [open, setOpen] = React.useState(false);
 
   const onSortItemClick = (object) => {
