@@ -365,7 +365,7 @@ body {
 
   &--empty {
     margin: 85px auto;
-    width: 560px;
+    width: calc(100% - 100px);
     text-align: center;
 
     h2 {
