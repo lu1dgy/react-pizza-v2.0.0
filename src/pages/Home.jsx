@@ -73,6 +73,7 @@ function Home() {
     // eslint-disable-next-line
   }, [categoryId, sortProp, searchValue, currentPage]);
 
+  //if 1st render then fetch
   React.useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
