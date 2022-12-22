@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,9 +17,11 @@ import {
   SetFilters,
 } from '../redux/slices/filterSlice';
 import { sortList } from '../utils/constants';
+import { fetchPizzas } from '../redux/slices/pizzasSlice';
 
 function Home() {
   //redux
+  const { items, status } = useSelector((state) => state.pizza);
   const { sortProp, categoryId, currentPage } = useSelector(
     (state) => state.filter
   );
@@ -31,8 +32,6 @@ function Home() {
   const isSearch = React.useRef(false);
 
   const { searchValue } = React.useContext(SearchContext);
-  const [items, setItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
 
   const onCLickCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -42,24 +41,22 @@ function Home() {
     dispatch(setCurrentPage(num));
   };
 
-  const fetchPizzas = async () => {
-    setIsLoading(true);
+  const getPizzas = async () => {
     //axios options
     const category = categoryId > 0 ? `category=${categoryId}` : ``;
     const sortBy = sortProp.sort.replace('-', '');
     const order = sortProp.sort[0] === `-` ? `asc` : `desc`;
     const search = searchValue ? `&search=${searchValue}` : ``;
 
-    try {
-      const res = await axios.get(
-        `https://6394ee6886829c49e82ab259.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-      );
-      setItems(res.data);
-    } catch (error) {
-      console.log('ERROR', error);
-    } finally {
-      setIsLoading(false);
-    }
+    dispatch(
+      fetchPizzas({
+        category,
+        sortBy,
+        order,
+        search,
+        currentPage,
+      })
+    );
   };
 
   React.useEffect(() => {
@@ -94,7 +91,7 @@ function Home() {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     if (!isSearch.current) {
-      fetchPizzas();
+      getPizzas();
     }
     isSearch.current = false;
     // eslint-disable-next-line
@@ -115,7 +112,9 @@ function Home() {
         <Sort />
       </div>
       <h2 className="content__title">All pizzas</h2>
-      <div className="content__items">{isLoading ? skeletons : pizzas}</div>
+      <div className="content__items">
+        {status === 'loading' ? skeletons : pizzas}
+      </div>
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
