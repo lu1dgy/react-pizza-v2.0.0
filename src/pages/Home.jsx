@@ -50,23 +50,15 @@ function Home() {
     const order = sortProp.sort[0] === `-` ? `asc` : `desc`;
     const search = searchValue ? `&search=${searchValue}` : ``;
 
-    // await axios
-    //   .get(
-    //     `https://6394ee6886829c49e82ab259.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-    //   )
-    //   .then((res) => {
-    //   })
-    //   .catch((err) => setIsLoading(false));
-
     try {
       const res = await axios.get(
         `https://6394ee6886829c49e82ab259.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
       );
       setItems(res.data);
-      setIsLoading(false);
     } catch (error) {
-      setIsLoading(false);
       console.log('ERROR', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
