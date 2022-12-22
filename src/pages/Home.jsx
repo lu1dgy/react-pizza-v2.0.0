@@ -42,7 +42,7 @@ function Home() {
     dispatch(setCurrentPage(num));
   };
 
-  const fetchPizzas = () => {
+  const fetchPizzas = async () => {
     setIsLoading(true);
     //axios options
     const category = categoryId > 0 ? `category=${categoryId}` : ``;
@@ -50,7 +50,7 @@ function Home() {
     const order = sortProp.sort[0] === `-` ? `asc` : `desc`;
     const search = searchValue ? `&search=${searchValue}` : ``;
 
-    axios
+    await axios
       .get(
         `https://6394ee6886829c49e82ab259.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
       )
