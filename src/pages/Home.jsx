@@ -10,7 +10,6 @@ import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
 
-import { SearchContext } from '../App';
 import NotFound from './NotFound';
 import {
   filterSelector,
