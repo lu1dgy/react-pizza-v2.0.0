@@ -24,14 +24,13 @@ import { sortList } from '../utils/constants';
 function Home() {
   //redux
   const { items, status } = useSelector(pizzaDataSelector);
-  const { sortProp, categoryId, currentPage } = useSelector(filterSelector);
+  const { sortProp, categoryId, currentPage, searchValue } =
+    useSelector(filterSelector);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isMounted = React.useRef(false);
   const isSearch = React.useRef(false);
-
-  const { searchValue } = React.useContext(SearchContext);
 
   const onCLickCategory = (id) => {
     dispatch(setCategoryId(id));
