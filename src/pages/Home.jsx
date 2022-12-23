@@ -11,20 +11,20 @@ import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
 
 import { SearchContext } from '../App';
+import NotFound from './NotFound';
 import {
+  filterSelector,
   setCategoryId,
   setCurrentPage,
   SetFilters,
 } from '../redux/slices/filterSlice';
+import { fetchPizzas, pizzaDataSelector } from '../redux/slices/pizzasSlice';
 import { sortList } from '../utils/constants';
-import { fetchPizzas } from '../redux/slices/pizzasSlice';
 
 function Home() {
   //redux
-  const { items, status } = useSelector((state) => state.pizza);
-  const { sortProp, categoryId, currentPage } = useSelector(
-    (state) => state.filter
-  );
+  const { items, status } = useSelector(pizzaDataSelector);
+  const { sortProp, categoryId, currentPage } = useSelector(filterSelector);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -112,9 +112,14 @@ function Home() {
         <Sort />
       </div>
       <h2 className="content__title">All pizzas</h2>
-      <div className="content__items">
-        {status === 'loading' ? skeletons : pizzas}
-      </div>
+      {status === 'error' ? (
+        <NotFound />
+      ) : (
+        <div className="content__items">
+          {status === 'loading' ? skeletons : pizzas}
+        </div>
+      )}
+
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
