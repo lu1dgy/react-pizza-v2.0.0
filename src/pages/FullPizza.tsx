@@ -3,8 +3,12 @@ import React from 'react';
 
 import { useParams } from 'react-router-dom';
 
-function FullPizza() {
-  const [pizza, setPizza] = React.useState();
+const FullPizza: React.FC = () => {
+  const [pizza, setPizza] = React.useState<{
+    imageUrl: string;
+    name: string;
+    price: number;
+  }>();
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -26,6 +30,7 @@ function FullPizza() {
   if (!pizza) {
     return <>loading...</>;
   }
+
   return (
     <div className="container">
       <img src={pizza.imageUrl} alt={pizza.name} />
@@ -33,6 +38,6 @@ function FullPizza() {
       <h4>{pizza.price}$</h4>
     </div>
   );
-}
+};
 
 export default FullPizza;
