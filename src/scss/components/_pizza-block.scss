@@ -11,6 +11,10 @@
   }
   &__image {
     width: 260px;
+    transition: 1s ease-out;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__title {

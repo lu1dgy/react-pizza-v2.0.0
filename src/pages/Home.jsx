@@ -95,9 +95,7 @@ function Home() {
     // eslint-disable-next-line
   }, [categoryId, sortProp, searchValue, currentPage]);
 
-  const pizzas = items.map((pizza) => (
-    <PizzaBlock {...pizza} key={`${pizza.name}_${pizza.id}`} />
-  ));
+  const pizzas = items.map((pizza) => <PizzaBlock {...pizza} key={pizza.id} />);
 
   const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
