@@ -1,4 +1,4 @@
-export const categories = [
+export const categories: string[] = [
   'All',
   'Meat',
   'Vegeterian',
@@ -8,7 +8,12 @@ export const categories = [
 ];
 export const typeDough = ['Thin', 'Traditional'];
 
-export const sortList = [
+export type sortListItem = {
+  name: string;
+  sort: string;
+};
+
+export const sortList: sortListItem[] = [
   { name: 'Popular(DESC)', sort: 'rating' },
   { name: 'Popular(ASC)', sort: '-rating' },
   { name: 'Price(DESC)', sort: 'price' },

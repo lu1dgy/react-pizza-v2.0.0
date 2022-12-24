@@ -3,7 +3,26 @@ import { useDispatch } from 'react-redux';
 
 import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice';
 
-function CartItem({ id, name, price, count, imageUrl, type, size }) {
+type cartItemProps = {
+  //id string because of mockAPI
+  id: string;
+  name: string;
+  imageUrl: string;
+  type: string;
+  price: number;
+  count: number;
+  size: number;
+};
+
+const CartItem: React.FC<cartItemProps> = ({
+  id,
+  name,
+  price,
+  count,
+  imageUrl,
+  type,
+  size,
+}) => {
   const dispatch = useDispatch();
 
   const onClickPlus = () => {
@@ -103,6 +122,6 @@ function CartItem({ id, name, price, count, imageUrl, type, size }) {
       </div>
     </div>
   );
-}
+};
 
 export default CartItem;

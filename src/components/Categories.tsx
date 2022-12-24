@@ -1,13 +1,22 @@
 import React from 'react';
 import { categories } from '../utils/constants';
-function Categories({ categoryId, onClickCategory }) {
+
+type CategoriesProps = {
+  categoryId: number;
+  onClickCategory: any;
+};
+
+const Categories: React.FC<CategoriesProps> = ({
+  categoryId,
+  onClickCategory,
+}) => {
   return (
     <div className="categories">
       <ul>
         {categories.map((category, index) => {
           return (
             <li
-              key={`${category}_${index}`}
+              key={index}
               onClick={() => onClickCategory(index)}
               className={categoryId === index ? 'active' : ''}>
               {category}
@@ -17,6 +26,6 @@ function Categories({ categoryId, onClickCategory }) {
       </ul>
     </div>
   );
-}
+};
 
 export default Categories;
