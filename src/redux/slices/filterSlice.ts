@@ -49,9 +49,18 @@ export const filterSlice = createSlice({
       state.currentPage = action.payload;
     },
     setFilters(state, action: PayloadAction<FilterSliceState>) {
-      state.sortProp = action.payload.sortProp;
-      state.currentPage = Number(action.payload.currentPage);
-      state.categoryId = Number(action.payload.categoryId);
+      if (Object.keys(action.payload).length) {
+        state.sortProp = action.payload.sortProp;
+        state.currentPage = Number(action.payload.currentPage);
+        state.categoryId = Number(action.payload.categoryId);
+      } else {
+        state.sortProp = {
+          name: 'popular',
+          sort: SortPropertyEnum.RATING_DESC,
+        };
+        state.currentPage = 1;
+        state.categoryId = 0;
+      }
     },
   },
 });

@@ -53,8 +53,8 @@ const Home: React.FC = () => {
 
     dispatch(
       fetchPizzas({
-        category,
-        sortBy,
+        categoryId: category,
+        sortProp: sortBy,
         order,
         search,
         currentPage,
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
         categoryId,
         currentPage,
       });
-      navigate(`/?${queryString}`);
+      navigate(`?${queryString}`);
     }
     isMounted.current = true;
     // eslint-disable-next-line
@@ -81,13 +81,13 @@ const Home: React.FC = () => {
       const params = qs.parse(
         window.location.search.substring(1)
       ) as unknown as FetchPizzasArguments;
-      const sort = sortList.find((obj) => obj.sort === params.sortBy);
-
+      const sort = sortList.find((obj) => obj.sort === params.sortProp);
+      console.log(params);
       dispatch(
         setFilters({
           searchValue: params.search,
-          categoryId: Number(params.category),
-          currentPage: params.currentPage,
+          categoryId: Number(params.categoryId),
+          currentPage: Number(params.currentPage),
           sortProp: sort || sortList[0],
         })
       );
