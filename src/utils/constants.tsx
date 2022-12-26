@@ -1,3 +1,5 @@
+import { SortPropertyEnum } from '../redux/slices/filterSlice';
+
 export const categories: string[] = [
   'All',
   'Meat',
@@ -10,14 +12,14 @@ export const typeDough = ['Thin', 'Traditional'];
 
 export type sortListItem = {
   name: string;
-  sort: string;
+  sort: SortPropertyEnum;
 };
 
 export const sortList: sortListItem[] = [
-  { name: 'Popular(DESC)', sort: 'rating' },
-  { name: 'Popular(ASC)', sort: '-rating' },
-  { name: 'Price(DESC)', sort: 'price' },
-  { name: 'Price(ASC)', sort: '-price' },
-  { name: 'Abc(DESC)', sort: 'name' },
-  { name: 'Abc(ASC)', sort: '-name' },
+  { name: 'Popular(DESC)', sort: SortPropertyEnum.RATING_DESC },
+  { name: 'Popular(ASC)', sort: SortPropertyEnum.RATING_ASC },
+  { name: 'Price(DESC)', sort: SortPropertyEnum.PRICE_DESC },
+  { name: 'Price(ASC)', sort: SortPropertyEnum.PRICE_ASC },
+  { name: 'Abc(DESC)', sort: SortPropertyEnum.NAME_DESC },
+  { name: 'Abc(ASC)', sort: SortPropertyEnum.NAME_ASC },
 ];
