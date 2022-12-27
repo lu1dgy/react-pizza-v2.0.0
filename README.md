@@ -2,7 +2,7 @@
 
 <h2>Description:</h2>
 <p>This website is under construction.It's the better version of previous React-pizza project</p>
-<p>It's a SPA. It's where I use Redux-toolkit and TypeScript</p>
+<p>It's a SPA. This page has pagination and search. My json is at the mockAPI</p>
 
 <h3>Technologies:</h3>
 <p>This page has adaptive layout.</p>
