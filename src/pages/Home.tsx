@@ -106,9 +106,11 @@ const Home: React.FC = () => {
     isSearch.current = false;
     // eslint-disable-next-line
   }, [categoryId, sortProp, searchValue, currentPage]);
-  const pizzas = items.map((pizza: Pizza) => {
-    return <PizzaBlock {...pizza} key={pizza.id} />;
-  });
+  const pizzas = Array.isArray(items)
+    ? items.map((pizza: Pizza) => {
+        return <PizzaBlock {...pizza} key={pizza.id} />;
+      })
+    : null;
 
   const skeletons = [...new Array(4)].map((_, index) => {
     return <Skeleton key={index} />;
