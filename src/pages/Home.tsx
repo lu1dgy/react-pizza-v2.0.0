@@ -20,6 +20,7 @@ import {
 import {
   fetchPizzas,
   FetchPizzasArguments,
+  Pizza,
   pizzaDataSelector,
 } from '../redux/slices/pizzasSlice';
 import { sortList } from '../utils/constants';
@@ -106,7 +107,7 @@ const Home: React.FC = () => {
     // eslint-disable-next-line
   }, [categoryId, sortProp, searchValue, currentPage]);
 
-  const pizzas = items.map((pizza: any) => (
+  const pizzas = items.map((pizza: Pizza) => (
     <PizzaBlock {...pizza} key={pizza.id} />
   ));
 

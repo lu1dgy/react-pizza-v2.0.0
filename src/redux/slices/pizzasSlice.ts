@@ -11,7 +11,7 @@ export type FetchPizzasArguments = {
   currentPage: number;
 };
 
-type Pizza = {
+export type Pizza = {
   id: string;
   name: string;
   price: number;
@@ -19,6 +19,7 @@ type Pizza = {
   sizes: number[];
   types: number[];
   count: number;
+  rating: number;
 };
 
 export enum Status {
