@@ -53,7 +53,7 @@ const Home: React.FC = () => {
     const order = sortProp.sort[0] === `-` ? `asc` : `desc`;
     const search = searchValue ? `&search=${searchValue}` : ``;
 
-    dispatch(
+    await dispatch(
       fetchPizzas({
         categoryId: category,
         sortProp: sortBy,
@@ -106,7 +106,6 @@ const Home: React.FC = () => {
     isSearch.current = false;
     // eslint-disable-next-line
   }, [categoryId, sortProp, searchValue, currentPage]);
-
   const pizzas = items.map((pizza: Pizza) => {
     return <PizzaBlock {...pizza} key={pizza.id} />;
   });
