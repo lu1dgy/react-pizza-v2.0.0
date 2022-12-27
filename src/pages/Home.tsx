@@ -36,9 +36,10 @@ const Home: React.FC = () => {
   const isMounted = React.useRef(false);
   const isSearch = React.useRef(false);
 
-  const onCLickCategory = (id: number) => {
+  const onChangeCategory = React.useCallback((id: number) => {
     dispatch(setCategoryId(id));
-  };
+    // eslint-disable-next-line
+  }, []);
 
   const onChangePage = (num: number) => {
     dispatch(setCurrentPage(num));
@@ -82,7 +83,7 @@ const Home: React.FC = () => {
         window.location.search.substring(1)
       ) as unknown as FetchPizzasArguments;
       const sort = sortList.find((obj) => obj.sort === params.sortProp);
-      console.log(params);
+
       dispatch(
         setFilters({
           searchValue: params.search,
@@ -116,7 +117,10 @@ const Home: React.FC = () => {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories categoryId={categoryId} onClickCategory={onCLickCategory} />
+        <Categories
+          categoryId={categoryId}
+          onChangeCategory={onChangeCategory}
+        />
         <Sort />
       </div>
       <h2 className="content__title">All pizzas</h2>
