@@ -53,7 +53,7 @@ const Home: React.FC = () => {
     const order = sortProp.sort[0] === `-` ? `asc` : `desc`;
     const search = searchValue ? `&search=${searchValue}` : ``;
 
-    await dispatch(
+    dispatch(
       fetchPizzas({
         categoryId: category,
         sortProp: sortBy,
