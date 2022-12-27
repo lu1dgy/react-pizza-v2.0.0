@@ -2,14 +2,14 @@
 
 <h2>Description:</h2>
 <p>This website is under construction.It's the better version of previous React-pizza project</p>
-<p>It's a SPA. Here you can search pizza for now, but the cart will be available in a few commits</p>
+<p>It's a SPA. It's where I use Redux-toolkit and TypeScript</p>
 
 <h3>Technologies:</h3>
 <p>This page has adaptive layout.</p>
 <ul>
 <li>React</li>
 <li>Redux</li>
-<li>JavaScript</li>
+<li>TypeScript</li>
 <li>mock API</li>
 <li>CSS3</li>
 <li>HTML5</li> 
