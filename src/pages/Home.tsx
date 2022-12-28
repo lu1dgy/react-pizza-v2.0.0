@@ -16,11 +16,11 @@ import {
   setCategoryId,
   setCurrentPage,
   setFilters,
-} from '../redux/slices/filter/slice';
-import { filterSelector } from '../redux/slices/filter/selectors';
-import { fetchPizzas } from '../redux/slices/pizzas/slice';
-import { pizzaDataSelector } from '../redux/slices/pizzas/selectors';
-import { FetchPizzasArguments, Pizza } from '../redux/slices/pizzas/types';
+} from '../redux/filter/slice';
+import { filterSelector } from '../redux/filter/selectors';
+import { fetchPizzas } from '../redux/pizzas/slice';
+import { pizzaDataSelector } from '../redux/pizzas/selectors';
+import { FetchPizzasArguments, Pizza } from '../redux/pizzas/types';
 import { useAppDispatch } from '../redux/store';
 
 const Home: React.FC = () => {

@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { addItem } from '../../redux/slices/cart/slice';
-import { cartSelectorById } from '../../redux/slices/cart/selectors';
-import { cartItem } from '../../redux/slices/cart/types';
+import { addItem } from '../../redux/cart/slice';
+import { cartSelectorById } from '../../redux/cart/selectors';
+import { cartItem } from '../../redux/cart/types';
 
 import { typeDough } from '../../utils/constants';
 
