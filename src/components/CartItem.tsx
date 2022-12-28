@@ -1,12 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import {
-  addItem,
-  cartItem,
-  minusItem,
-  removeItem,
-} from '../redux/slices/cartSlice';
+import { cartItem } from '../redux/slices/cart/types';
+import { addItem, minusItem, removeItem } from '../redux/slices/cart/slice';
 
 type cartItemProps = {
   //id string because of mockAPI

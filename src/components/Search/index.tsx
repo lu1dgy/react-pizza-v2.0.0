@@ -6,7 +6,7 @@ import styles from './Search.module.scss';
 import serchLogo from '../../assets/img/search-icon.svg';
 import closeIcon from '../../assets/img/close-icon.svg';
 import { useDispatch } from 'react-redux';
-import { setSearchValue } from '../../redux/slices/filterSlice';
+import { setSearchValue } from '../../redux/slices/filter/slice';
 
 const Search: React.FC = () => {
   const dispatch = useDispatch();

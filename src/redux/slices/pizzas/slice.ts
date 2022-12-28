@@ -1,37 +1,7 @@
-import { RootState } from '../store';
+import { FetchPizzasArguments, Pizza, Status, PizzaState } from './types';
 import axios from 'axios';
 
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-
-export type FetchPizzasArguments = {
-  categoryId: string;
-  sortProp: string;
-  order: string;
-  search: string;
-  currentPage: number;
-};
-
-export type Pizza = {
-  id: string;
-  name: string;
-  price: number;
-  imageUrl: string;
-  sizes: number[];
-  types: number[];
-  count: number;
-  rating: number;
-};
-
-export enum Status {
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
-}
-
-interface PizzaState {
-  items: Pizza[];
-  status: Status;
-}
 
 export const fetchPizzas = createAsyncThunk(
   'pizza/fetchPizzasStatus',
@@ -74,7 +44,6 @@ export const pizzaSlice = createSlice({
   },
 });
 
-export const pizzaDataSelector = (state: RootState) => state.pizza;
 export const { setItems } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

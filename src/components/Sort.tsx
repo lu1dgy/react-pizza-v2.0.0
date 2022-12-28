@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setSortType, sortSelector } from '../redux/slices/filterSlice';
-
+import { setSortType } from '../redux/slices/filter/slice';
+import { sortSelector } from '../redux/slices/filter/selectors';
 import { sortList, sortListItem } from '../utils/constants';
 
 const Sort: React.FC = React.memo(() => {
