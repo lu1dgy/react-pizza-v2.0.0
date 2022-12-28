@@ -10,11 +10,20 @@ const Header: React.FC = () => {
   const { items, totalPrice } = useSelector(cartSelector);
 
   const { pathname } = useLocation();
+  const isMounted = React.useRef(false);
 
   const totalCount = items.reduce(
     (sum: number, item: any) => sum + item.count,
     0
   );
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cartItems', json);
+    }
+    isMounted.current = true;
+  }, [items]);
 
   return (
     <div className="header">
