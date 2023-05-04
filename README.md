@@ -1,8 +1,8 @@
 <h1>React pizza-v2</h1>
 
 <h2>Description:</h2>
-<p>It's the better version of the previous React-pizza project<p>
-<p>This page has pagination and search. My json is at the mockAPI</p>
+<p>This project is a pizza website with a frontend built using TypeScript and React. It includes features such as browsing and ordering pizzas, and adding to cart. The application uses modern web technologies and follows best practices in user interface design to provide an intuitive and responsive user experience.<p>
+<p>My json is at the mockAPI</p>
 
 <h3>Technologies:</h3>
 <p>This page has adaptive layout.</p>
@@ -17,7 +17,7 @@
 <li>Grid</li>
 </ul>
 
-Link: https://react-pizza-v2-0-0.vercel.app/
+Deploy: https://react-pizza-v2-0-0.vercel.app/
 
 ## Available Scripts
 
